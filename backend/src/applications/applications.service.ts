@@ -66,4 +66,23 @@ export class ApplicationsService {
       totalPages: Math.ceil(total / limit),
     };
   }
+
+  //* -------------------------Get application by id -----------------------
+  async findOne(id: string) {
+    return this.applicationRepo.findOne({
+      where: { id },
+    });
+  }
+
+  //* -------------------------Delete application by id -----------------------
+  async delete(id: string) {
+    const application = await this.applicationRepo.findOne({
+      where: { id },
+    });
+
+    if (!application)
+      return new NotFoundException(`Application with id ${id} not found.`);
+
+    return await this.applicationRepo.remove(application);
+  }
 }

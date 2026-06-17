@@ -1,5 +1,5 @@
 export enum JobType {
-  INTERNSHIP = 'Internship',
-  FULL_TIME = 'Full-time',
-  PART_TIME = 'Part-time',
+  INTERNSHIP = 'internship',
+  FULL_TIME = 'full-time',
+  PART_TIME = 'part-time',
 }

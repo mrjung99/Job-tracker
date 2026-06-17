@@ -38,7 +38,6 @@ export class ApplicationsController {
   }
 
   //* --------------- Get all application ----------
-
   @Get()
   async findAll(
     @Query('status') status: ApplicationStatus,
@@ -52,5 +51,26 @@ export class ApplicationsController {
       parseInt(page),
       parseInt(limit),
     );
+  }
+
+  //* --------------- Get application by id ----------
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    const application = await this.applicationsService.findOne(id);
+    return {
+      success: true,
+      application,
+    };
+  }
+
+  //* --------------- Delete application by id ----------
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    await this.applicationsService.delete(id);
+
+    return {
+      success: true,
+      message: `Application with id ${id} deleted successfully.`,
+    };
   }
 }
