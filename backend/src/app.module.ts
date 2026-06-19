@@ -20,7 +20,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         return {
           type: 'postgres',
           autoLoadEntities: true,
-          synchronize: !isProd,
+          synchronize: true,
 
           ...(isProd
             ? {
